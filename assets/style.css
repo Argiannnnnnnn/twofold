@@ -124,3 +124,10 @@ dialog{border:0;border-radius:16px;max-width:520px;width:92%;padding:1.5rem 2rem
 .ddp label{display:flex;align-items:center;gap:.6rem;padding:.35rem .3rem;margin:0;font-size:.85rem;font-weight:500;cursor:pointer;border-radius:6px}.ddp label:hover{background:#fff3e8}.ddp input{width:auto;margin:0;accent-color:var(--or)}.ddp .link{margin-top:.5rem}
 
 .ddp input[type=checkbox]{flex:none;width:16px;height:16px;min-width:0;padding:0;margin:0;background:none}.ddp label{justify-content:flex-start;text-align:left}
+
+/* ordering cards: smaller, consistent photo area */
+.pc img,.pc .ph{width:100%;height:auto;aspect-ratio:4/3;min-height:0;object-fit:cover;display:block}.pc .ph{font-size:1.6rem}
+
+/* show the whole drink photo (no cropping) */
+.pc img{aspect-ratio:1/1;object-fit:contain;background:#fff}.pc .ph{aspect-ratio:1/1}
+.card img{object-fit:contain;background:#fff}

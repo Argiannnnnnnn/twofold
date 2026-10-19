@@ -22,7 +22,7 @@ function go($url){header('Location: '.$url);exit;}
 
 function logo_url(){foreach(['logo.jpg','logo.jpeg','logo.png'] as $f)if(file_exists(dirname(__DIR__).'/assets/img/'.$f))return BASE.'/assets/img/'.$f;return '';}
 function drink_url($p){$slug=trim(preg_replace('/[^a-z0-9]+/','-',strtolower($p['name'])),'-');$d=dirname(__DIR__).'/assets/img/';
- foreach(['drinks/'.$slug.'.jpg','drinks/'.$slug.'.png','drinks/'.$slug.'.webp',$p['image']??''] as $f)if($f&&file_exists($d.$f))return BASE.'/assets/img/'.$f;return '';}
+ foreach([$p['image']??'','drinks/'.$slug.'.jpg','drinks/'.$slug.'.png','drinks/'.$slug.'.webp'] as $f)if($f&&file_exists($d.$f))return BASE.'/assets/img/'.$f;return '';}
 function drink_html($p){$u=drink_url($p);return $u?'<img src="'.e($u).'" alt="'.e($p['name']).'" loading="lazy">':'<div class="ph">☕</div>';}
 function is_customer(){return !empty($_SESSION['user_id']);}
 function is_staff(){return !empty($_SESSION['staff_id']);}

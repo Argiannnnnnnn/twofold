@@ -39,8 +39,7 @@ $old=function($k,$d=''){return e($_POST[$k]??$d);};$f0=$_POST['fulfillment']??'p
 $pj=[];foreach($prods as $p)$pj[$p['id']]=['name'=>$p['name'],'price'=>(float)$p['price']];
 $order=['Iced Shaken Brown Sugar Latte','Spanish Latte','Seasalt Latte','Orange Americano','Strawberry Cloud Latte','Matcha Latte','Ube Latte','Ube Matcha','Honey Cinnamon Shaken Espresso'];
 $desc=['Iced Shaken Brown Sugar Latte'=>'Shaken, sweet & smooth','Spanish Latte'=>'Creamy everyday favorite','Seasalt Latte'=>'A little sweet, a little salty','Orange Americano'=>'Bright citrus meets espresso','Strawberry Cloud Latte'=>'Berry good, cloud soft','Matcha Latte'=>'Earthy, creamy, balanced','Ube Latte'=>'Your purple pick-me-up','Ube Matcha'=>'Two favorites, one cup','Honey Cinnamon Shaken Espresso'=>'Warm spice, served over ice'];
-$cards=[];foreach($order as $nm)foreach($prods as $p)if($p['name']===$nm)$cards[]=$p;
-$cardIds=array_column($cards,'id');$rest=array_values(array_filter($prods,function($p)use($cardIds){return !in_array($p['id'],$cardIds);}));
+$cards=[];$rest=[];foreach($prods as $p){if(drink_url($p)!=='')$cards[]=$p;else $rest[]=$p;}
 $title='Order coffee — Twofold Coffee';$simpleFooter=true;require 'includes/header.php';
 if(isset($_GET['done'])): ?>
 <main class="auth"><h2>Order #<?=(int)$_GET['done']?> received<i class="o">.</i></h2><p class="mute">Thank you! The shop will confirm payment details and pickup or delivery with you shortly.</p><a class="btn orange" href="orders.php">Track my order</a> <a class="btn light" href="index.php">Back to home</a></main>
